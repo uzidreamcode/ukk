@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-group label-floating">
                     <label class="control-label">NIK</label>
-                    <input class="form-control" placeholder="" name="nik" type="number">
+                    <input onkeypress="return hanyaAngka(event)" maxlength="16" class="form-control" placeholder="" name="nik" type="text">
                 </div>
 
                 <div class="form-group label-floating">
@@ -189,6 +189,15 @@
         </div>
     </div>
 </footer>
+<script type="text/javascript">
+
+function hanyaAngka(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 16 && angka > 31 && (angka < 48 || angka > 57))
+          return false;
+        return true;
+      }
+</script>
 <script  src="assets/js/sticky-sidebar.js"></script>
 <script  src="assets/js/YouTubePopUp.jquery.js"></script>
 <script  src="assets/js/owl.carousel.min.js"></script>
