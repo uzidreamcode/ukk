@@ -610,114 +610,118 @@
                                                     </li>
                                                     <li role="presentation" class="disabled">
                                                         <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span
-                                                            class="round-tab">4</span> <i>Perjanjian Pengguna</i></a>
+                                                            class="round-tab">3</span> <i>Riwayat Penyakit</i></a>
                                                         </li>
-                                                    </ul>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab"><span
+                                                                class="round-tab">4</span> <i>Perjanjian Pengguna</i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="container">
+                                            <div class="card">
+                                                <div class="container">
 
 
-                                                <form role="form" action="index.html" class="login-box">
-                                                    <div class="tab-content" id="main_form">
-                                                        <div class="tab-pane active" role="tabpanel" id="step1">
-                                                            <h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">Informasi Pribadi</h4>
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Nama Lengkap (Sesuai KTP)</label>
-                                                                        <input required="" class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Email</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div style="margin-top: 30px" class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>NIK</label>
-                                                                        <input class="form-control" type="email" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div style="margin-top: 30px" class="form-group">
-                                                                        <label>Jenis Kelamin</label>
-                                                                        <select  required="" name="country" class="form-control" id="country">
-                                                                            <option value="NS">Silahkan Pilih Jenis Kelamin</option>
-                                                                            <option value="NG">Laki - Laki</option>
-                                                                            <option value="NU">Perempuan</option>
-                                                                            
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div style="margin-top: 30px" class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Nomor Handphone</label>
-                                                                        <input required="" class="form-control" type="password" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div style="margin-top: 30px" class="form-group">
-                                                                        <label>Agama</label>
-                                                                        <select  required="" name="country" class="form-control" id="country">
-                                                                            <option value="NS">Silahkan Pilih Jenis Kelamin</option>
-                                                                            <option value="NG">Islam</option>
-                                                                            <option value="NG">Kristen (Protestan)</option>
-                                                                            <option value="NU">kristen (Katolik)</option>
-                                                                            <option value="NU">Hindu</option>
-                                                                            <option value="NU">Budha</option>
-                                                                            <option value="NU">Konghucu</option>
-                                                                            <option value="NU">Lainnya</option>
-                                                                            
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div style="margin-top: 30px" class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Tempat Lahir</label>
-                                                                        <input  required="" class="form-control" type="password" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div style="margin-top: 30px" class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Tanggal Lahir :</label>
-                                                                        <input  required="" class="form-control" type="date" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <input type="hidden" name="lon" id="lon" size=12 value="" class="form-control" id="inputCity">
-
-
-                                                                    <input type="hidden" name="lat" id="lat" size=12 value=""
-                                                                    class="form-control" id="inputCity">
-                                                                    <div class="col-md-12">
-                                                                        <div id="search">
-                                                                            <label>Cari Alamat</label>
-                                                                            <input placeholder="Cari Alamat" type="text" name="addr" class="form-control" value="" id="addr" size="58" />
-                                                                            <button style="margin-top: 10px; margin-bottom: 10px" class="btn btn-light" type="button" onclick="addr_search();">Search</button>
-                                                                            <div id="results"></div>
+                                                    <form role="form" method="post" class="login-box">
+                                                        <div class="tab-content" id="main_form">
+                                                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                                                <h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">Informasi Pribadi</h4>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Nama Lengkap (Sesuai KTP)</label>
+                                                                            <input required="" class="form-control" type="text" name="nama" placeholder="">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="card
-                                                                    ">
-                                                                    <div id="map"></div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Email</label>
+                                                                            <input class="form-control" type="text" name="email" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="margin-top: 30px" class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>NIK</label>
+                                                                            <input class="form-control" type="text" name="nik" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div style="margin-top: 30px" class="form-group">
+                                                                            <label>Jenis Kelamin</label>
+                                                                            <select name="kelamin" required="" name="country" class="form-control" id="country">
+                                                                                <option>Silahkan Pilih Jenis Kelamin</option>
+                                                                                <option value="laki-laki">Laki - Laki</option>
+                                                                                <option value="perempuan">Perempuan</option>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div style="margin-top: 30px" class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Handphone</label>
+                                                                            <input required="" class="form-control" type="text" name="hp" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div style="margin-top: 30px" class="form-group">
+                                                                            <label>Agama</label>
+                                                                            <select  required="" name="agama" class="form-control" id="country">
+                                                                                <option>Silahkan Pilih Agama Anda</option>
+                                                                                <option value="Islam">Islam</option>
+                                                                                <option value="Kristen (Protestan)">Kristen (Protestan)</option>
+                                                                                <option value="kristen (Katolik)">kristen (Katolik)</option>
+                                                                                <option value="Hindu">Hindu</option>
+                                                                                <option value="Budha">Budha</option>
+                                                                                <option value="Konghucu">Konghucu</option>
+                                                                                <option value="Lainnya">Lainnya</option>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="margin-top: 30px" class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Tempat Lahir</label>
+                                                                            <input  required="" class="form-control" type="text" name="tempat_lahir" placeholder="">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div style="margin-top: 30px" class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Tanggal Lahir :</label>
+                                                                            <input name="tanggal_lahir"  required="" class="form-control" type="date" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <input type="hidden" name="lon" id="lon" size=12 value="" class="form-control" id="inputCity">
+
+
+                                                                        <input type="hidden" name="lat" id="lat" size=12 value=""
+                                                                        class="form-control" id="inputCity">
+                                                                        <div class="col-md-12">
+                                                                            <div id="search">
+                                                                                <label>Cari Alamat</label>
+                                                                                <input placeholder="Cari Alamat" type="text" name="addr" class="form-control" value="" id="addr" size="58" />
+                                                                                <button style="margin-top: 10px; margin-bottom: 10px" class="btn btn-light" type="button" onclick="addr_search();">Search</button>
+                                                                                <div id="results"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card
+                                                                        ">
+                                                                        <div id="map"></div>
                                                                         
                                                                     </div>
-                <style type="text/css">
-                    html, body { width:100%;padding:0;margin:0; }
-                    .container { width:100%;max-width:980px;padding:1% 2%;margin:0 auto }
-                    #lat, #lon { text-align:right }
-                    #map { width:100%;height:225px;padding:0;margin:0; }
-                    .address { cursor:pointer }
-                    .address:hover { color:#AA0000;text-decoration:underline }
-                </style>
-                
+                                                                    <style type="text/css">
+                                                                        html, body { width:100%;padding:0;margin:0; }
+                                                                        .container { width:100%;max-width:980px;padding:1% 2%;margin:0 auto }
+                                                                        #lat, #lon { text-align:right }
+                                                                        #map { width:100%;height:225px;padding:0;margin:0; }
+                                                                        .address { cursor:pointer }
+                                                                        .address:hover { color:#AA0000;text-decoration:underline }
+                                                                    </style>
+
                                                                     
                                                                 </div>
 
@@ -727,154 +731,126 @@
                                                                 <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
                                                             </ul>
                                                         </div>
-                                                        <div class="tab-pane" role="tabpanel" id="step2">
-                                                            <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Alamat</h4>
-                                                            <div class="row">
-
-                                                            </div>
-
-
-                                                            
-                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
-                                                                <li><button type="button" class="default-btn prev-step shadow " onclick="prevEle(2);">Previous</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
-                                                            </ul>
-                                                        </div>
+                                                        
                                                         <div class="tab-pane" role="tabpanel" id="step3">
                                                             <h4 class="text-center">Unggah Foto</h4>
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    
+                                                                <div style="margin-top: 100px" class="row">
+                                                                    <input  type="file" name="foto" >
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Inteview Date :</label>
-                                                                        <input class="form-control" type="date" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Interview Type :</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="">Requirements :</label>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                                            id="flexRadioDefault1">
-                                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                                Employee
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                                            id="flexRadioDefault1">
-                                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                                Contract
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label>Location :</label>
-                                                                    <select name="country" class="form-control" id="country">
-                                                                        <option value="NS">Select City</option>
-                                                                        <option value="NG">Nigeria</option>
-                                                                        <option value="NU">Niue</option>
-                                                                        <option value="NF">Norfolk Island</option>
-                                                                        <option value="KP">North Korea</option>
-                                                                        <option value="MP">Northern Mariana Islands</option>
-                                                                        <option value="NO">Norway</option>
-                                                                    </select>
-                                                                </div>
-
                                                             </div>
-                                                            <ul class="list-inline pull-right">
-                                                                <li><button type="button" class="default-btn prev-step shadow" onclick="prevEle(3);">Previous</button></li>
-                                                                <li><button type="button" class="default-btn next-step">Next</button></li>
+                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
+                                                                <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
                                                             </ul>
                                                         </div>
                                                         <div class="tab-pane" role="tabpanel" id="step4">
-                                                            <h4 class="text-center">Remark</h4>
+
+                                                            <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Riwayat Penyakit</h4>
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Behavior :</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
+
+                                                                <h4 class="header-title">Tinymce wysihtml5</h4>
+                                                                <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
+                                                                    plugin that makes it easy to create simple, beautiful wysiwyg editors
+                                                                with the help of wysihtml5 and Twitter Bootstrap.</p>
+
+                                                                <form method="post">
+                                                                    <textarea name="riwayat" id="elm1" name="area"></textarea>
+                                                                </form>
+
+                                                            </div>
+
+
+                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
+                                                                <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
+                                                            </ul>
+
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step5">
+                                                            <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Perjanjian yesus</h4>
+                                                            <div class="row">
+
+                                                                <h4 class="header-title">Tinymce wysihtml5</h4>
+                                                                <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
+                                                                    plugin that makes it easy to create simple, beautiful wysiwyg editors
+                                                                with the help of wysihtml5 and Twitter Bootstrap.</p>
+
+
+                                                                <textarea style="width: 1000px; height: 200px" name="area">
+                                                                    I. PENTING! INI ADALAH PERJANJIAN HUKUM YANG MENGIKAT ("Perjanjian" ini). HARAP BACA SYARAT DAN KETENTUAN PENGGUNAAN INI DENGAN SAKSAMA SEBELUM MENGGUNAKAN SITUS INI.
+
+                                                                    Perjanjian ini mengatur penggunaan Anda atas situs Internet ini yang berada di hilton.com (secara bersama-sama disebut sebagai "Situs") dan dibuat oleh dan antara Hilton Worldwide Holdings Inc. (disebut di sini sebagai "HWI" atau "kami") dan Anda, atas nama diri Anda sendiri dan pembeli, anggota, atau pemasok yang telah Anda daftarkan ("Anda"). Dengan menggunakan, melihat, mentransmisikan, menyimpan cache, menyimpan dan/atau memanfaatkan Situs, layanan, atau fungsi yang ditawarkan di atau oleh Situs dan/atau konten Situs dengan cara apa pun, Anda telah menyetujui masing-masing dan semua syarat dan ketentuan yang tercantum di bawah ini, dan melepaskan hak untuk mengklaim ambiguitas atau kesalahan dalam Perjanjian ini. Apabila Anda tidak menyetujui masing-masing dan semua syarat dan ketentuan ini, harap tidak menggunakan Situs dan segera meninggalkan Situs. Kami berhak, atas kewenangan mutlak kami semata, untuk mengubah, memodifikasi, menambah, atau menghapus bagian-bagian dari syarat ini setiap saat tanpa pemberitahuan dan, kecuali dinyatakan lain, perubahan tersebut akan berlaku dengan segera; oleh karena itu, periksalah syarat ini secara berkala untuk melihat perubahan. Dengan terus menggunakan Situs setelah posting perubahan pada Perjanjian ini berarti Anda menerima perubahan tersebut.
+
+                                                                    II. PEMENUHAN SYARAT
+
+                                                                    Situs hanya tersedia untuk individu atau entitas yang dapat membentuk kontrak yang mengikat secara hukum berdasarkan hukum yang berlaku. Tanpa membatasi hal tersebut di atas, Situs dan layanan yang ditawarkan oleh Situs tidak tersedia bagi anak di bawah umur. Apabila Anda tidak memenuhi syarat, Anda tidak boleh menggunakan Situs. Anda menjamin bahwa Anda berusia delapan belas (18) tahun atau lebih untuk memesan kamar di Situs ini. Apabila Anda berusia di bawah delapan belas tahun, Anda dapat menghubungi hotel secara langsung untuk meminta bantuan.
+
+                                                                    Anda juga menjamin bahwa Anda secara hukum diizinkan untuk melakukan reservasi perjalanan dan/atau membeli baik untuk Anda ataupun untuk orang lain yang Anda wakili. Anda hanya dapat menggunakan Situs ini untuk melakukan reservasi atau pembelian yang sah dan tidak akan menggunakan Situs ini untuk tujuan lain apa pun, termasuk tanpa batasan, untuk melakukan reservasi yang spekulatif, palsu, atau menipu, ataupun reservasi untuk mengantisipasi permintaan.
+
+                                                                    Kami berhak untuk membatalkan atau memodifikasi reservasi yang terlihat bahwa pelanggan terlibat dalam tindakan penipuan atau tidak pantas ataupun dalam keadaan lain yang terlihat bahwa reservasi itu mengandung atau dihasilkan dari kesalahan atau dari upaya untuk menghindari kebijakan, syarat, atau ketentuan HWI atau hotel.
+
+                                                                    Anda memahami bahwa penggunaan berlebihan dan penyalahgunaan fasilitas reservasi Situs ini dapat mengakibatkan akses Anda ditolak ke fasilitas tersebut.
+
+                                                                    Reservasi yang dilakukan oleh satu atau lebih individu ataupun oleh agen di Situs, atas nama satu atau lebih tamu yang diajukan, dan melibatkan lebih dari sembilan (9) kamar di hotel yang sama untuk masa inap yang sama, harus dilakukan secara langsung melalui hotel. Apabila pemesanan lebih dari sembilan (9) kamar di hotel yang sama untuk masa inap yang sama dilakukan dengan metode lain, kami berhak untuk membatalkan atau memberlakukan persyaratan tambahan pada reservasi tersebut.
+
+                                                                    Beberapa harga memiliki persyaratan pemenuhan syarat khusus seperti keanggotaan Hilton Honors, AAA, atau AARP. Merupakan tanggung jawab Anda untuk memverifikasi bahwa Anda memenuhi syarat untuk harga yang telah Anda pesan. Hotel tidak berkewajiban untuk menyetujui harga jika Anda tidak memenuhi syarat.
+
+                                                                </textarea>
+
+
+                                                            </div>
+                                                            <div style="margin-top: 30px; margin-left: -15px" class="custom-control custom-checkbox">
+                                                                <input name="setuju" type="checkbox" class="custom-control-input" id="invalidCheck" required>
+                                                                <label class="custom-control-label" for="invalidCheck">Saya Menyetujuinya</label>
+                                                                <div class="invalid-feedback">
+                                                                    Kamu Harus Menyetujuinya sebeleum melanjutkan.
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleFormControlTextarea1" class="form-label">
-                                                                        Comments</label>
-                                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                                        rows="2"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Confidance :</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
-                                                                    <label>Result :</label>
-                                                                    <select name="country" class="form-control" id="country">
-                                                                        <option value="NS">Select Result</option>
-                                                                        <option value="NG">A Grade</option>
-                                                                        <option value="NU">B Grade</option>
-                                                                        <option value="NF">C Grade</option>
-                                                                        <option value="NF">D Grade</option>
-
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Rate Interviewer :</label>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                            <label class="form-check-label" for="flexCheckDefault">
-                                                                              1 star
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                        <label class="form-check-label" for="flexCheckDefault">
-                                                                          2 star
-                                                                      </label>
-                                                                  </div>
-                                                                  <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                    <label class="form-check-label" for="flexCheckDefault">
-                                                                      3 star
-                                                                  </label>
-                                                              </div>
-                                                              <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                  4 star
-                                                              </label>
-                                                          </div>
-                                                          <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                            <label class="form-check-label" for="flexCheckDefault">
-                                                              5 star
-                                                          </label>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                                            </div>
 
 
-                                          <ul class="list-inline pull-right">
-                                            <li><button type="button" class="default-btn prev-step shadow" onclick="prevEle(4);">Previous</button></li>
-                                            <li><button type="button" class="default-btn btn-submit shadow">Submit</button></li>
+                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
+                                                                <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button name="gaskan" class="btn btn-primary">Lanjut</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
 
-                                        </ul>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
+                                                </form>
+                                                <?php 
+                                                include 'koneksi.php';
+                                                if (isset($_POST['gaskan'])) 
+                                                {
+                                                    $rand = rand();
+                                $nama_gambar=$_FILES['foto'] ['name']; // Mendapatkan nama gambar
+                                $lokasi=$_FILES['foto'] ['tmp_name'];
+                                $lokasitujuan="./images";
+    // Menguplaod gambar kedalam folder ./image
+                                $upload=move_uploaded_file($lokasi,$lokasitujuan."/".$nama_gambar);
 
-                            </form>
+                                $nama = $_POST['nama'];
+                                $email = $_POST['email'];
+                                $nik =$_POST['nik'];
+                                $lo = $_POST['lon'];
+                                $la = $_POST['lat'];
+                                $kelamin = $_POST['kelamin'];
+                                $hp = $_POST['hp'];
+                                $agama = $_POST['agama'];
+                                $tempat_lahir = $_POST['tempat_lahir'];
+                                $tanggal_lahir = $_POST['tanggal_lahir'];
+                                $riwayat = $_POST['riwayat'];
+                                $setuju = $_POST['setuju'];
+
+
+
+
+
+
+                                $query = "INSERT INTO data VALUES ('','$nik','$kelamin','$hp','$agama','$tempat_lahir','$tanggal_lahir','$lo','$la','$nama_gambar','$riwayat','$setuju')";
+                                $result = mysqli_query($koneksi,$query);
+
+                                echo "<script>alert('berhasil menambahkan hotel')</script>";
+                                echo "<script>location='index.php?halaman=hotel'</script>";
+                            }
+                            ?>
 
                         </div>
                     </div>
@@ -1395,5 +1371,13 @@ function addr_search()
 
 </script>
 
+<!--tinymce js-->
+<script src="assets/libs/tinymce/tinymce.min.js"></script>
+
+<!--ck editor js-->
+<script src="assets/libs/ckeditor4/ckeditor.js"></script>
+
+<!-- init js -->
+<script src="assets/js/pages/form-editor.init.js"></script>
 </body>
 </html>

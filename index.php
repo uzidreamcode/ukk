@@ -71,7 +71,7 @@
                         <a href="dashboard-add-listing.html" class="btn btn-sm border-radius-30 margin-tb-15px text-white background-second-color  box-shadow float-right padding-lr-20px margin-left-30px">
                           <i class="fas fa-plus-circle"></i>  Add list
                         </a>
-                        <a href="login.php" class="margin-tb-20px d-inline-block text-up-small float-left float-lg-right"><i class="far fa-user"></i>  Login</a>
+                        <a href="admin/login.php" class="margin-tb-20px d-inline-block text-up-small float-left float-lg-right"><i class="far fa-user"></i>  Login</a>
                     </div>
                 </div>
 
