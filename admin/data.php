@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -92,22 +95,22 @@
         z-index: 1;
     }
     .connecting-line::after{
-       content: '';
-       position: absolute;
-       background-color: #0e97cb;
-       height: 100%;
-       width: 0%;
-       z-index: 0;
-       left: 0%;
-       bottom: 0%;
-   }
+     content: '';
+     position: absolute;
+     background-color: #0e97cb;
+     height: 100%;
+     width: 0%;
+     z-index: 0;
+     left: 0%;
+     bottom: 0%;
+ }
 
 
 
 
 
 
-   span.round-tab {
+ span.round-tab {
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -624,7 +627,7 @@
                                                 <div class="container">
 
 
-                                                    <form role="form" method="post" class="login-box">
+                                                    <form enctype="multipart/form-data"  role="form" method="post" class="login-box">
                                                         <div class="tab-content" id="main_form">
                                                             <div class="tab-pane active" role="tabpanel" id="step1">
                                                                 <h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">Informasi Pribadi</h4>
@@ -632,19 +635,19 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>Nama Lengkap (Sesuai KTP)</label>
-                                                                            <input required="" class="form-control" type="text" name="nama" placeholder="">
+                                                                            <input disabled="" required="" class="form-control" type="text" name="nama" value="<?php echo $_SESSION['nama']?>"  placeholder="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>Email</label>
-                                                                            <input class="form-control" type="text" name="email" placeholder="">
+                                                                            <input disabled="" class="form-control" value="<?php echo $_SESSION['email']?>" type="text" name="email" placeholder="">
                                                                         </div>
                                                                     </div>
                                                                     <div style="margin-top: 30px" class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>NIK</label>
-                                                                            <input class="form-control" type="text" name="nik" placeholder="">
+                                                                            <input  class="form-control" type="text" name="nik" value="<?php echo $_SESSION['nik']?>"  placeholder="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -662,7 +665,7 @@
                                                                     <div style="margin-top: 30px" class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>Nomor Handphone</label>
-                                                                            <input required="" class="form-control" type="text" name="hp" placeholder="">
+                                                                            <input  required="" class="form-control" type="text" name="hp" placeholder="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">

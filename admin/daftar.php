@@ -59,108 +59,108 @@ session_start();
                 </div>
                 <div class="col-lg-7 col-md-12 position-inherit">
                     
-                        <ul id="menu-main" class="nav-menu float-lg-right link-padding-tb-20px">
-                            <li><a href="index.php">Beranda</a>
-                                
-                            </li>
+                    <ul id="menu-main" class="nav-menu float-lg-right link-padding-tb-20px">
+                        <li><a href="index.php">Beranda</a>
                             
+                        </li>
+                        
+                        
+                        <li ><a href="blog.php">Artikel</a>
                             
-                            <li ><a href="blog.php">Artikel</a>
-                                
-                            </li>
-                            <li><a href="tentang.php">Tentang Kami</a>
-                                
-                            </li>
-                            <li><a href="hubungi.php">Hubungi Kami</a></li>
-                        </ul>
+                        </li>
+                        <li><a href="tentang.php">Tentang Kami</a>
+                            
+                        </li>
+                        <li><a href="hubungi.php">Hubungi Kami</a></li>
+                    </ul>
                     
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <hr class="margin-bottom-0px d-block d-sm-none">
                     
-                  <a href="page-login.html" class="margin-tb-20px d-inline-block text-up-small float-left float-lg-right"><i class="far fa-user"></i>  Login</a>
-              </div>
-          </div>
+                    <a href="page-login.html" class="margin-tb-20px d-inline-block text-up-small float-left float-lg-right"><i class="far fa-user"></i>  Login</a>
+                </div>
+            </div>
 
-      </div>
-  </header>
-  <!-- // Header  -->
+        </div>
+    </header>
+    <!-- // Header  -->
 
-  <div id="page-title" class="padding-tb-30px gradient-white">
-    <div class="container text-center">
-        <ol class="breadcrumb opacity-5">
-            <li><a href="#">Home</a></li>
-            <li class="active">Sing Up</li>
-        </ol>
-        <h1 class="font-weight-300">Daftar</h1>
+    <div id="page-title" class="padding-tb-30px gradient-white">
+        <div class="container text-center">
+            <ol class="breadcrumb opacity-5">
+                <li><a href="#">Home</a></li>
+                <li class="active">Sing Up</li>
+            </ol>
+            <h1 class="font-weight-300">Daftar</h1>
+        </div>
     </div>
-</div>
 
-<div class="container margin-bottom-100px">
-    <!--======= log_in_page =======-->
-    <div id="log-in" class="site-form log-in-form box-shadow border-radius-10">
+    <div class="container margin-bottom-100px">
+        <!--======= log_in_page =======-->
+        <div id="log-in" class="site-form log-in-form box-shadow border-radius-10">
 
-        <div class="form-output">
+            <div class="form-output">
 
-            <form method="post">
-                <div class="form-group label-floating">
-                    <label class="control-label">Nama</label>
-                    <input class="form-control" placeholder="" name="nama" type="text">
-                </div>
-                <div class="form-group label-floating">
-                    <label class="control-label">NIK</label>
-                    <input onkeypress="return hanyaAngka(event)" maxlength="16" class="form-control" placeholder="" name="nik" type="text">
-                </div>
+                <form method="post">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Nama</label>
+                        <input class="form-control" placeholder="" name="nama" type="text">
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">NIK</label>
+                        <input onkeypress="return hanyaAngka(event)" maxlength="16" class="form-control" placeholder="" name="nik" type="text">
+                    </div>
 
-                <div class="form-group label-floating">
-                    <label class="control-label">Email</label>
-                    <input class="form-control" placeholder="" name="email" type="email">
-                </div>
-                <div class="form-group label-floating">
-                    <label class="control-label">Password</label>
-                    <input class="form-control" placeholder="" name="password" type="text">
-                </div>
-
+                    <div class="form-group label-floating">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" placeholder="" name="email" type="email">
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Password</label>
+                        <input class="form-control" placeholder="" name="password" type="text">
+                    </div>
 
 
 
 
-                <button name="daftar" class="btn btn-md btn-primary full-width">Daftar</button>
 
-                <div class="or"></div>
+                    <button name="daftar" class="btn btn-md btn-primary full-width">Daftar</button>
+
+                    <div class="or"></div>
 
 
 
 
-                <p>you have an account? <a href="login.php"> Login</a> </p>
-            </form>
-            <?php
-            include 'koneksi.php';
+                    <p>you have an account? <a href="login.php"> Login</a> </p>
+                </form>
+                <?php
+                include 'koneksi.php';
 
-            if (isset($_POST['daftar'])) 
-            {
-               $nama=$_POST['nama'];
-               $password=$_POST['password'];
-               $email=$_POST['email'];
-               $nik=$_POST['nik'];
+                if (isset($_POST['daftar'])) 
+                {
+                 $nama=$_POST['nama'];
+                 $password=$_POST['password'];
+                 $email=$_POST['email'];
+                 $nik=$_POST['nik'];
 
-               $koneksi->query("INSERT INTO user VALUES('','$nik','$email','$password') ");
-               echo "<script>alert('berhasil mendaftar')</script>";
-                echo "<script>location='index.php'</script>";
+                 $koneksi->query("INSERT INTO user VALUES('','$nik','$email','$password') ");
+                 echo "<script>alert('berhasil mendaftar')</script>";
+                 echo "<script>location='index.php'</script>";
 
-                $_SESSION['nama']=$nama;
-                $_SESSION['email']=$email;
-                $_SESSION['nik']=$nik;
-            }
-       ?>
+                 $_SESSION['nama']=$nama;
+                 $_SESSION['email']=$email;
+                 $_SESSION['nik']=$nik;
+             }
+             ?>
 
-   </div>
-</div>
-<!--======= // log_in_page =======-->
+         </div>
+     </div>
+     <!--======= // log_in_page =======-->
 
-</div>
+ </div>
 
-<footer class="padding-tb-100px background-main-color">
+ <footer class="padding-tb-100px background-main-color">
     <div class="container">
         <div class="row">
             <div class="col-lg-2">
@@ -198,12 +198,12 @@ session_start();
 </footer>
 <script type="text/javascript">
 
-function hanyaAngka(event) {
+    function hanyaAngka(event) {
         var angka = (event.which) ? event.which : event.keyCode
         if (angka != 16 && angka > 31 && (angka < 48 || angka > 57))
           return false;
-        return true;
-      }
+      return true;
+  }
 </script>
 <script  src="../assets/js/sticky-sidebar.js"></script>
 <script  src="../assets/js/YouTubePopUp.jquery.js"></script>
