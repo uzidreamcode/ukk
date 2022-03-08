@@ -1,5 +1,19 @@
 <?php
 session_start();
+include 'koneksi.php';
+$nik=$_SESSION['nik'];
+$ambil=$koneksi->query("SELECT * FROM data WHERE nik='$nik'");
+$benar=$ambil->fetch_assoc();
+if ($benar > 0) 
+{
+
+    echo "<script>location='index.php'</script>";
+
+}
+else
+{
+ 
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -647,7 +661,8 @@ session_start();
                                                                     <div style="margin-top: 30px" class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>NIK</label>
-                                                                            <input  class="form-control" type="text" name="nik" value="<?php echo $_SESSION['nik']?>"  placeholder="">
+                                                                            <input class="form-control" value="<?php echo $_SESSION['nik']?>" type="text" name="nik" placeholder="">
+
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -850,8 +865,8 @@ session_start();
                                 $query = "INSERT INTO data VALUES ('','$nik','$kelamin','$hp','$agama','$tempat_lahir','$tanggal_lahir','$lo','$la','$nama_gambar','$riwayat','$setuju')";
                                 $result = mysqli_query($koneksi,$query);
 
-                                echo "<script>alert('berhasil menambahkan hotel')</script>";
-                                echo "<script>location='index.php?halaman=hotel'</script>";
+                                echo "<script>alert('berhasil menambahkan data')</script>";
+                                echo "<script>location='index.php'</script>";
                             }
                             ?>
 

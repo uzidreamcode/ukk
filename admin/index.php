@@ -1,5 +1,18 @@
 <?php
 session_start();
+include 'koneksi.php';
+$nik=$_SESSION['nik'];
+$ambil=$koneksi->query("SELECT * FROM data WHERE nik='$nik'");
+$benar=$ambil->fetch_assoc();
+if ($benar > 0) 
+{
+   
+   
+}
+else
+{
+    echo "<script>location='data.php'</script>";
+}
 if (!isset($_SESSION['nama'])) 
 {
     echo "<script>location='login.php'</script>";
