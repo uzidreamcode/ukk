@@ -144,7 +144,7 @@ session_start();
                  $email=$_POST['email'];
                  $nik=$_POST['nik'];
 
-                 $koneksi->query("INSERT INTO user VALUES('','$nik','$email','$password') ");
+                 $koneksi->query("INSERT INTO user VALUES('','$nik','$nama','$email','$password') ");
                  echo "<script>alert('berhasil mendaftar')</script>";
                  echo "<script>location='index.php'</script>";
 
