@@ -1,3 +1,11 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+$nik=$_SESSION['nik'];
+$ambil_foto=$koneksi->query("SELECT * FROM data_foto WHERE nik='$nik'");
+$pecah_foto=$ambil_foto->fetch_assoc();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -86,7 +94,7 @@
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                                <img class="rounded-circle header-profile-user" src="<?php echo $pecah_foto['foto']?> " alt="Header Avatar">
                                 <span class="d-none d-sm-inline-block ml-1">Smith</span>
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
@@ -336,37 +344,39 @@
                     <!-- Start right Content here -->
                     <!-- ============================================================== -->
                     <div class="main-content">
+                        <?php
+                        $ambil_user=$koneksi->query("SELECT * FROM user WHERE nik='$nik' ");
+                        $pecah_user=$ambil_user->fetch_assoc();
+                        ?>
+
 
                         <div class="page-content">
 
                             <!-- Page-Title -->
                             <div class="page-title-box">
                                 <div class="container-fluid">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-8">
-                                            <img height="200" style=" background-size: cover;
-                                            display: block;
-                                            border-radius: 125px;
-                                            -webkit-border-radius: 125px;
-                                            -moz-border-radius: 125px;" src="https://www.allkpop.com/upload/2021/06/content/031826/1622759209-194348924-2897897517158308-983525867806252410-n.jpg">
-                                            <h4 class="page-title mb-1">Email Inbox</h4>
+                                    <div class="row align-items-">
+                                        <div class="col-md-3">
+                                            <img height="200" class="rounded-circle" height="200" src="<?php echo $pecah_foto['foto']?>">
+                                            <h1 style="margin-left: 40px; margin-top: 20px" class="page-title mb-1">
+                                                <?php echo $pecah_user['nama_lengkap'];
+                                                ?>
+                                            </h1>
                                             <ol class="breadcrumb m-0">
                                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Email</a></li>
                                                 <li class="breadcrumb-item active">Inbox</li>
                                             </ol>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="float-right d-none d-md-block">
+                                        <div class="col-md-9">
+                                            <div class=" d-none d-md-block">
                                                 <div class="dropdown">
-                                                    <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-settings-outline mr-1"></i> Settings
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Separated link</a>
+                                                    <div class="border border-light" style="height: 50px; border-radius: 50px" class="card">
+                                                        <h6 style="margin-top: 15px; margin-left: 30px; color: white"  class="text-left">
+
+                                                        Dashboard</h6>
+                                                        <h6 style="margin-top: 15px;  color: white"  class="text-right">
+
+                                                        Dashboard</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1694,5 +1704,5 @@ function addr_search()
     });
 </script>
 
-            </body>
-            </html>
+</body>
+</html>
