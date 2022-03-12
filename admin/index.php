@@ -13,7 +13,7 @@ else
 {
     echo "<script>location='data.php'</script>";
 }
-if (!isset($_SESSION['nama'])) 
+if (!isset($_SESSION['nik'])) 
 {
     echo "<script>location='login.php'</script>";
 }
@@ -83,7 +83,7 @@ if (!isset($_SESSION['nama']))
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- item-->
                                 
-
+                                <a class="dropdown-item" href="dashboard.php"><i class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> Profile</a>
                                 <a class="dropdown-item" href="logout.php"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
                             </div>
                         </div>

@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -150,34 +152,42 @@
                 <div class="remember">
                     <div class="checkbox">
                         <label>
-                         <input name="optionsCheckboxes" type="checkbox">
-                         Remember Me
-                     </label>
-                 </div>
-                 <a href="#" class="forgot">Forgot my Password</a>
-             </div>
+                           <input name="optionsCheckboxes" type="checkbox">
+                           Remember Me
+                       </label>
+                   </div>
+                   <a href="#" class="forgot">Forgot my Password</a>
+               </div>
 
-             <button name="login" class="btn btn-md btn-primary full-width">Login</button>
+               <button name="login" class="btn btn-md btn-primary full-width">Login</button>
 
-             <div class="or"></div>
-
-
+               <div class="or"></div>
 
 
-             <p>Don't you have an account? <a href="daftar.php">Daftar Sekarang!</a> </p>
-         </form>
-         <?php
-         if (isset($_POST['login'])) 
-         {
+
+
+               <p>Don't you have an account? <a href="daftar.php">Daftar Sekarang!</a> </p>
+           </form>
+           <?php
+           if (isset($_POST['login'])) 
+           {
             $nik=$_POST['nik'];
             $password=md5($_POST['password']);
-            $ambil=$koneksi->query("select * from user where nik='$nik' and password='$password'");
-            $benar =$ambil->num_rows;
+            $ambil=$koneksi->query("SELECT * from user where nik='$nik' and password='$password'");
+            $benar =$ambil->num_rows;   
             if ($benar > 0) 
             {
+                $pecah=$ambil->fetch_assoc();
                 echo "<script>alert ('anda admin')</script>";
-                echo "<script>location='admin'</script>";
+                echo "<script>location='index.php'</script>";
                 $_SESSION['admin']=$nik;
+                $_SESSION['nik']=$nik;
+                $_SESSION['nama']=$pecah['nama'];
+                $_SESSION['email']=$pecah['email'];
+
+
+
+
             }
             else
             {
@@ -231,12 +241,12 @@
 </footer>
 <script type="text/javascript">
 
-function hanyaAngka(event) {
+    function hanyaAngka(event) {
         var angka = (event.which) ? event.which : event.keyCode
         if (angka != 16 && angka > 31 && (angka < 48 || angka > 57))
           return false;
-        return true;
-      }
+      return true;
+  }
 </script>
 <script  src="../assets/js/sticky-sidebar.js"></script>
 <script  src="../assets/js/YouTubePopUp.jquery.js"></script>
