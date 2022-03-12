@@ -12,63 +12,125 @@ if ($benar > 0)
 }
 else
 {
- 
+
 }
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard | Xoric - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-    <!-- datepicker -->
-    <link href="assets/libs/air-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- jvectormap -->
-    <link href="assets/libs/jqvmap/jqvmap.min.css" rel="stylesheet" />
-
-    <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <style type="text/css">
-        html, body { width:100%;padding:0;margin:0; }
-        .container { width:95%;max-width:980px;padding:1% 2%;margin:0 auto }
-        #lat, #lon { text-align:right }
-        #map { width:100%;height:50%;padding:0;margin:0; }
-        .address { cursor:pointer }
-        .address:hover { color:#AA0000;text-decoration:underline }
-    </style>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+        <style>
 
-    <!-- Load Esri Leaflet from CDN -->
-    <script src="https://unpkg.com/esri-leaflet@3.0.1/dist/esri-leaflet.js"
-    integrity="sha512-JmpptMCcCg+Rd6x0Dbg6w+mmyzs1M7chHCd9W8HPovnImG2nLAQWn3yltwxXRM7WjKKFFHOAKjjF2SC4CgiFBg=="
-    crossorigin=""></script>
+        .image_area {
+          position: relative;
+      }
 
-    <!-- Load Esri Leaflet Geocoder from CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.css"
-    integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
-    crossorigin="">
-    <script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"
-    integrity="sha512-vZbMwAf1/rpBExyV27ey3zAEwxelsO4Nf+mfT7s6VTJPUbYmD2KSuTRXTxOFhIYqhajaBU+X5PuFK1QJ1U9Myg=="
-    crossorigin=""></script>
+      img {
+        display: block;
+        max-width: 100%;
+    }
+
+    .preview {
+        overflow: hidden;
+        width: 160px; 
+        height: 160px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .modal-lg{
+        max-width: 1000px !important;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+      height: 0;
+      transition: .5s ease;
+      width: 100%;
+  }
+
+  .image_area:hover .overlay {
+      height: 50%;
+      cursor: pointer;
+  }
+
+  .text {
+      color: #333;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+  }
+  
+</style>
+</style>
+<meta charset="utf-8" />
+<title>Dashboard | Xoric - Responsive Bootstrap 4 Admin Dashboard</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>        
+<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet"/>
+<script src="https://unpkg.com/dropzone"></script>
+<script src="https://unpkg.com/cropperjs"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+<meta content="Themesdesign" name="author" />
+<!-- App favicon -->
+<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+<!-- datepicker -->
+<link href="assets/libs/air-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css" />
+
+<!-- jvectormap -->
+<link href="assets/libs/jqvmap/jqvmap.min.css" rel="stylesheet" />
+
+<!-- Bootstrap Css -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+<style type="text/css">
+    html, body { width:100%;padding:0;margin:0; }
+    .container { width:95%;max-width:980px;padding:1% 2%;margin:0 auto }
+    #lat, #lon { text-align:right }
+    #map { width:100%;height:50%;padding:0;margin:0; }
+    .address { cursor:pointer }
+    .address:hover { color:#AA0000;text-decoration:underline }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
+<!-- Load Esri Leaflet from CDN -->
+<script src="https://unpkg.com/esri-leaflet@3.0.1/dist/esri-leaflet.js"
+integrity="sha512-JmpptMCcCg+Rd6x0Dbg6w+mmyzs1M7chHCd9W8HPovnImG2nLAQWn3yltwxXRM7WjKKFFHOAKjjF2SC4CgiFBg=="
+crossorigin=""></script>
+
+<!-- Load Esri Leaflet Geocoder from CDN -->
+<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.css"
+integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+crossorigin="">
+<script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"
+integrity="sha512-vZbMwAf1/rpBExyV27ey3zAEwxelsO4Nf+mfT7s6VTJPUbYmD2KSuTRXTxOFhIYqhajaBU+X5PuFK1QJ1U9Myg=="
+crossorigin=""></script>
 
 </head>
 <style type="text/css">
@@ -753,502 +815,532 @@ else
                                                         <div class="tab-pane" role="tabpanel" id="step3">
                                                             <h4 class="text-center">Unggah Foto</h4>
                                                             <div class="row">
-                                                                <div style="margin-top: 100px" class="row">
-                                                                    <input  type="file" name="foto" >
-                                                                </div>
-                                                            </div>
-                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
-                                                                <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="tab-pane" role="tabpanel" id="step4">
-
-                                                            <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Riwayat Penyakit</h4>
-                                                            <div class="row">
-
-                                                                <h4 class="header-title">Tinymce wysihtml5</h4>
-                                                                <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
-                                                                    plugin that makes it easy to create simple, beautiful wysiwyg editors
-                                                                with the help of wysihtml5 and Twitter Bootstrap.</p>
-
-                                                                <form method="post">
-                                                                    <textarea name="riwayat" id="elm1" name="area"></textarea>
+                                                                <div style="margin-top: 100px" class="row"><form method="post">
+                                                                    <label for="upload_image">
+                                                                        <img style="height: 300px" src="http://localhost/ukk/admin/Images/IMG_20220213_165531-removebg.png" id="uploaded_image" class="img-responsive img-circle" />
+                                                                        <div class="overlay">
+                                                                            <div class="text">Click to Change Profile Image</div>
+                                                                        </div>
+                                                                        <input type="file" name="image" class="image" id="upload_image" style="display:none" />
+                                                                    </label>
                                                                 </form>
-
-                                                            </div>
-
-
-                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
-                                                                <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <div class="tab-pane" role="tabpanel" id="step5">
-                                                            <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Perjanjian yesus</h4>
-                                                            <div class="row">
-
-                                                                <h4 class="header-title">Tinymce wysihtml5</h4>
-                                                                <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
-                                                                    plugin that makes it easy to create simple, beautiful wysiwyg editors
-                                                                with the help of wysihtml5 and Twitter Bootstrap.</p>
-
-
-                                                                <textarea style="width: 1000px; height: 200px" name="area">
-                                                                    I. PENTING! INI ADALAH PERJANJIAN HUKUM YANG MENGIKAT ("Perjanjian" ini). HARAP BACA SYARAT DAN KETENTUAN PENGGUNAAN INI DENGAN SAKSAMA SEBELUM MENGGUNAKAN SITUS INI.
-
-                                                                    Perjanjian ini mengatur penggunaan Anda atas situs Internet ini yang berada di hilton.com (secara bersama-sama disebut sebagai "Situs") dan dibuat oleh dan antara Hilton Worldwide Holdings Inc. (disebut di sini sebagai "HWI" atau "kami") dan Anda, atas nama diri Anda sendiri dan pembeli, anggota, atau pemasok yang telah Anda daftarkan ("Anda"). Dengan menggunakan, melihat, mentransmisikan, menyimpan cache, menyimpan dan/atau memanfaatkan Situs, layanan, atau fungsi yang ditawarkan di atau oleh Situs dan/atau konten Situs dengan cara apa pun, Anda telah menyetujui masing-masing dan semua syarat dan ketentuan yang tercantum di bawah ini, dan melepaskan hak untuk mengklaim ambiguitas atau kesalahan dalam Perjanjian ini. Apabila Anda tidak menyetujui masing-masing dan semua syarat dan ketentuan ini, harap tidak menggunakan Situs dan segera meninggalkan Situs. Kami berhak, atas kewenangan mutlak kami semata, untuk mengubah, memodifikasi, menambah, atau menghapus bagian-bagian dari syarat ini setiap saat tanpa pemberitahuan dan, kecuali dinyatakan lain, perubahan tersebut akan berlaku dengan segera; oleh karena itu, periksalah syarat ini secara berkala untuk melihat perubahan. Dengan terus menggunakan Situs setelah posting perubahan pada Perjanjian ini berarti Anda menerima perubahan tersebut.
-
-                                                                    II. PEMENUHAN SYARAT
-
-                                                                    Situs hanya tersedia untuk individu atau entitas yang dapat membentuk kontrak yang mengikat secara hukum berdasarkan hukum yang berlaku. Tanpa membatasi hal tersebut di atas, Situs dan layanan yang ditawarkan oleh Situs tidak tersedia bagi anak di bawah umur. Apabila Anda tidak memenuhi syarat, Anda tidak boleh menggunakan Situs. Anda menjamin bahwa Anda berusia delapan belas (18) tahun atau lebih untuk memesan kamar di Situs ini. Apabila Anda berusia di bawah delapan belas tahun, Anda dapat menghubungi hotel secara langsung untuk meminta bantuan.
-
-                                                                    Anda juga menjamin bahwa Anda secara hukum diizinkan untuk melakukan reservasi perjalanan dan/atau membeli baik untuk Anda ataupun untuk orang lain yang Anda wakili. Anda hanya dapat menggunakan Situs ini untuk melakukan reservasi atau pembelian yang sah dan tidak akan menggunakan Situs ini untuk tujuan lain apa pun, termasuk tanpa batasan, untuk melakukan reservasi yang spekulatif, palsu, atau menipu, ataupun reservasi untuk mengantisipasi permintaan.
-
-                                                                    Kami berhak untuk membatalkan atau memodifikasi reservasi yang terlihat bahwa pelanggan terlibat dalam tindakan penipuan atau tidak pantas ataupun dalam keadaan lain yang terlihat bahwa reservasi itu mengandung atau dihasilkan dari kesalahan atau dari upaya untuk menghindari kebijakan, syarat, atau ketentuan HWI atau hotel.
-
-                                                                    Anda memahami bahwa penggunaan berlebihan dan penyalahgunaan fasilitas reservasi Situs ini dapat mengakibatkan akses Anda ditolak ke fasilitas tersebut.
-
-                                                                    Reservasi yang dilakukan oleh satu atau lebih individu ataupun oleh agen di Situs, atas nama satu atau lebih tamu yang diajukan, dan melibatkan lebih dari sembilan (9) kamar di hotel yang sama untuk masa inap yang sama, harus dilakukan secara langsung melalui hotel. Apabila pemesanan lebih dari sembilan (9) kamar di hotel yang sama untuk masa inap yang sama dilakukan dengan metode lain, kami berhak untuk membatalkan atau memberlakukan persyaratan tambahan pada reservasi tersebut.
-
-                                                                    Beberapa harga memiliki persyaratan pemenuhan syarat khusus seperti keanggotaan Hilton Honors, AAA, atau AARP. Merupakan tanggung jawab Anda untuk memverifikasi bahwa Anda memenuhi syarat untuk harga yang telah Anda pesan. Hotel tidak berkewajiban untuk menyetujui harga jika Anda tidak memenuhi syarat.
-
-                                                                </textarea>
-
-
-                                                            </div>
-                                                            <div style="margin-top: 30px; margin-left: -15px" class="custom-control custom-checkbox">
-                                                                <input name="setuju" type="checkbox" class="custom-control-input" id="invalidCheck" required>
-                                                                <label class="custom-control-label" for="invalidCheck">Saya Menyetujuinya</label>
-                                                                <div class="invalid-feedback">
-                                                                    Kamu Harus Menyetujuinya sebeleum melanjutkan.
+                                                                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-lg" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title">Crop Image Before Upload</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">×</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="img-container">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-8">
+                                                                                            <img src="" id="sample_image" />
+                                                                                        </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <div class="preview"></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" id="crop" class="btn btn-primary">Crop</button>
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-
-
-                                                            <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
-                                                                <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button name="gaskan" class="btn btn-primary">Lanjut</button></li>
-                                                            </ul>
                                                         </div>
-                                                        <div class="clearfix"></div>
+                                                        <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
+                                                            <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
+                                                        </ul>
                                                     </div>
+                                                    <div class="tab-pane" role="tabpanel" id="step4">
 
-                                                </form>
-                                                <?php 
-                                                include 'koneksi.php';
-                                                if (isset($_POST['gaskan'])) 
-                                                {
-                                                    $rand = rand();
-                                $nama_gambar=$_FILES['foto'] ['name']; // Mendapatkan nama gambar
-                                $lokasi=$_FILES['foto'] ['tmp_name'];
-                                $lokasitujuan="./images";
-    // Menguplaod gambar kedalam folder ./image
-                                $upload=move_uploaded_file($lokasi,$lokasitujuan."/".$nama_gambar);
+                                                        <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Riwayat Penyakit</h4>
+                                                        <div class="row">
 
-                                $nama = $_POST['nama'];
-                                $email = $_POST['email'];
-                                $nik =$_POST['nik'];
-                                $lo = $_POST['lon'];
-                                $la = $_POST['lat'];
-                                $kelamin = $_POST['kelamin'];
-                                $hp = $_POST['hp'];
-                                $agama = $_POST['agama'];
-                                $tempat_lahir = $_POST['tempat_lahir'];
-                                $tanggal_lahir = $_POST['tanggal_lahir'];
-                                $riwayat = $_POST['riwayat'];
-                                $setuju = $_POST['setuju'];
+                                                            <h4 class="header-title">Tinymce wysihtml5</h4>
+                                                            <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
+                                                                plugin that makes it easy to create simple, beautiful wysiwyg editors
+                                                            with the help of wysihtml5 and Twitter Bootstrap.</p>
+
+                                                            <form method="post">
+                                                                <textarea name="riwayat" id="elm1" name="area"></textarea>
+                                                            </form>
+
+                                                        </div>
 
 
+                                                        <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
+                                                            <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button type="button" class="default-btn next-step">Lanjut</button></li>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div class="tab-pane" role="tabpanel" id="step5">
+                                                        <h4 style="margin-bottom: 50px; margin-top: 50px" class="text-center">Perjanjian yesus</h4>
+                                                        <div class="row">
+
+                                                            <h4 class="header-title">Tinymce wysihtml5</h4>
+                                                            <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
+                                                                plugin that makes it easy to create simple, beautiful wysiwyg editors
+                                                            with the help of wysihtml5 and Twitter Bootstrap.</p>
+
+
+                                                            <textarea style="width: 1000px; height: 200px" name="area">
+                                                                I. PENTING! INI ADALAH PERJANJIAN HUKUM YANG MENGIKAT ("Perjanjian" ini). HARAP BACA SYARAT DAN KETENTUAN PENGGUNAAN INI DENGAN SAKSAMA SEBELUM MENGGUNAKAN SITUS INI.
+
+                                                                Perjanjian ini mengatur penggunaan Anda atas situs Internet ini yang berada di hilton.com (secara bersama-sama disebut sebagai "Situs") dan dibuat oleh dan antara Hilton Worldwide Holdings Inc. (disebut di sini sebagai "HWI" atau "kami") dan Anda, atas nama diri Anda sendiri dan pembeli, anggota, atau pemasok yang telah Anda daftarkan ("Anda"). Dengan menggunakan, melihat, mentransmisikan, menyimpan cache, menyimpan dan/atau memanfaatkan Situs, layanan, atau fungsi yang ditawarkan di atau oleh Situs dan/atau konten Situs dengan cara apa pun, Anda telah menyetujui masing-masing dan semua syarat dan ketentuan yang tercantum di bawah ini, dan melepaskan hak untuk mengklaim ambiguitas atau kesalahan dalam Perjanjian ini. Apabila Anda tidak menyetujui masing-masing dan semua syarat dan ketentuan ini, harap tidak menggunakan Situs dan segera meninggalkan Situs. Kami berhak, atas kewenangan mutlak kami semata, untuk mengubah, memodifikasi, menambah, atau menghapus bagian-bagian dari syarat ini setiap saat tanpa pemberitahuan dan, kecuali dinyatakan lain, perubahan tersebut akan berlaku dengan segera; oleh karena itu, periksalah syarat ini secara berkala untuk melihat perubahan. Dengan terus menggunakan Situs setelah posting perubahan pada Perjanjian ini berarti Anda menerima perubahan tersebut.
+
+                                                                II. PEMENUHAN SYARAT
+
+                                                                Situs hanya tersedia untuk individu atau entitas yang dapat membentuk kontrak yang mengikat secara hukum berdasarkan hukum yang berlaku. Tanpa membatasi hal tersebut di atas, Situs dan layanan yang ditawarkan oleh Situs tidak tersedia bagi anak di bawah umur. Apabila Anda tidak memenuhi syarat, Anda tidak boleh menggunakan Situs. Anda menjamin bahwa Anda berusia delapan belas (18) tahun atau lebih untuk memesan kamar di Situs ini. Apabila Anda berusia di bawah delapan belas tahun, Anda dapat menghubungi hotel secara langsung untuk meminta bantuan.
+
+                                                                Anda juga menjamin bahwa Anda secara hukum diizinkan untuk melakukan reservasi perjalanan dan/atau membeli baik untuk Anda ataupun untuk orang lain yang Anda wakili. Anda hanya dapat menggunakan Situs ini untuk melakukan reservasi atau pembelian yang sah dan tidak akan menggunakan Situs ini untuk tujuan lain apa pun, termasuk tanpa batasan, untuk melakukan reservasi yang spekulatif, palsu, atau menipu, ataupun reservasi untuk mengantisipasi permintaan.
+
+                                                                Kami berhak untuk membatalkan atau memodifikasi reservasi yang terlihat bahwa pelanggan terlibat dalam tindakan penipuan atau tidak pantas ataupun dalam keadaan lain yang terlihat bahwa reservasi itu mengandung atau dihasilkan dari kesalahan atau dari upaya untuk menghindari kebijakan, syarat, atau ketentuan HWI atau hotel.
+
+                                                                Anda memahami bahwa penggunaan berlebihan dan penyalahgunaan fasilitas reservasi Situs ini dapat mengakibatkan akses Anda ditolak ke fasilitas tersebut.
+
+                                                                Reservasi yang dilakukan oleh satu atau lebih individu ataupun oleh agen di Situs, atas nama satu atau lebih tamu yang diajukan, dan melibatkan lebih dari sembilan (9) kamar di hotel yang sama untuk masa inap yang sama, harus dilakukan secara langsung melalui hotel. Apabila pemesanan lebih dari sembilan (9) kamar di hotel yang sama untuk masa inap yang sama dilakukan dengan metode lain, kami berhak untuk membatalkan atau memberlakukan persyaratan tambahan pada reservasi tersebut.
+
+                                                                Beberapa harga memiliki persyaratan pemenuhan syarat khusus seperti keanggotaan Hilton Honors, AAA, atau AARP. Merupakan tanggung jawab Anda untuk memverifikasi bahwa Anda memenuhi syarat untuk harga yang telah Anda pesan. Hotel tidak berkewajiban untuk menyetujui harga jika Anda tidak memenuhi syarat.
+
+                                                            </textarea>
+
+
+                                                        </div>
+                                                        <div style="margin-top: 30px; margin-left: -15px" class="custom-control custom-checkbox">
+                                                            <input name="setuju" type="checkbox" class="custom-control-input" id="invalidCheck" required>
+                                                            <label class="custom-control-label" for="invalidCheck">Saya Menyetujuinya</label>
+                                                            <div class="invalid-feedback">
+                                                                Kamu Harus Menyetujuinya sebeleum melanjutkan.
+                                                            </div>
+                                                        </div>
+
+
+                                                        <ul style="margin-top: 80px" class=" text-right list-inline pull-left">
+                                                            <li><button type="button" class="default-btn prev-step shadow  " disabled >Kembali</button> <button name="gaskan" class="btn btn-primary">Lanjut</button></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+
+                                            </form>
+                                            <?php 
+                                            include 'koneksi.php';
+                                            if (isset($_POST['gaskan'])) 
+                                            {
+
+
+                                                $nama = $_POST['nama'];
+                                                $email = $_POST['email'];
+                                                $nik =$_POST['nik'];
+                                                $lo = $_POST['lon'];
+                                                $la = $_POST['lat'];
+                                                $kelamin = $_POST['kelamin'];
+                                                $hp = $_POST['hp'];
+                                                $agama = $_POST['agama'];
+                                                $tempat_lahir = $_POST['tempat_lahir'];
+                                                $tanggal_lahir = $_POST['tanggal_lahir'];
+                                                $riwayat = $_POST['riwayat'];
+                                                $setuju = $_POST['setuju'];
 
 
 
 
-                                $query = "INSERT INTO data VALUES ('','$nik','$kelamin','$hp','$agama','$tempat_lahir','$tanggal_lahir','$lo','$la','$nama_gambar','$riwayat','$setuju')";
-                                $result = mysqli_query($koneksi,$query);
 
-                                echo "<script>alert('berhasil menambahkan data')</script>";
-                                echo "<script>location='index.php'</script>";
-                            }
-                            ?>
+
+                                                $query = "INSERT INTO data VALUES ('','$nik','$kelamin','$hp','$agama','$tempat_lahir','$tanggal_lahir','$lo','$la','','$riwayat','$setuju')";
+                                                $result = mysqli_query($koneksi,$query);
+
+                                                echo "<script>alert('berhasil menambahkan data')</script>";
+                                                echo "<script>location='index.php'</script>";
+                                            }
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
 
                         </div>
-                    </div>
-                </div>
+                        <!-- end row -->
 
+
+                        <!-- end row -->
+
+
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- end page-content-wrapper -->
             </div>
+            <!-- End Page-content -->
 
 
 
         </div>
-        <!-- end row -->
+        <!-- end main content-->
 
+    </div>
+    <!-- END layout-wrapper -->
 
-        <!-- end row -->
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div data-simplebar class="h-100">
 
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-tabs-custom rightbar-nav-tab nav-justified" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link py-3 active" data-toggle="tab" href="#chat-tab" role="tab">
+                        <i class="mdi mdi-message-text font-size-22"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-3" data-toggle="tab" href="#tasks-tab" role="tab">
+                        <i class="mdi mdi-format-list-checkbox font-size-22"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-3" data-toggle="tab" href="#settings-tab" role="tab">
+                        <i class="mdi mdi-settings font-size-22"></i>
+                    </a>
+                </li>
+            </ul>
 
-        <!-- end row -->
+            <!-- Tab panes -->
+            <div class="tab-content text-muted">
+                <div class="tab-pane active" id="chat-tab" role="tabpanel">
 
-    </div> <!-- container-fluid -->
-</div>
-<!-- end page-content-wrapper -->
-</div>
-<!-- End Page-content -->
+                    <form class="search-bar py-4 px-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="mdi mdi-magnify"></span>
+                        </div>
+                    </form>
 
+                    <h6 class="px-4 py-3 mt-2 bg-light">Group Chats</h6>
 
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset notification-item pl-3 mb-2 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline mr-1 text-success"></i>
+                            <span class="mb-0 mt-1">App Development</span>
+                        </a>
 
-</div>
-<!-- end main content-->
+                        <a href="javascript: void(0);" class="text-reset notification-item pl-3 mb-2 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline mr-1 text-warning"></i>
+                            <span class="mb-0 mt-1">Office Work</span>
+                        </a>
 
-</div>
-<!-- END layout-wrapper -->
+                        <a href="javascript: void(0);" class="text-reset notification-item pl-3 mb-2 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline mr-1 text-danger"></i>
+                            <span class="mb-0 mt-1">Personal Group</span>
+                        </a>
 
-<!-- Right Sidebar -->
-<div class="right-bar">
-    <div data-simplebar class="h-100">
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs nav-tabs-custom rightbar-nav-tab nav-justified" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link py-3 active" data-toggle="tab" href="#chat-tab" role="tab">
-                    <i class="mdi mdi-message-text font-size-22"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link py-3" data-toggle="tab" href="#tasks-tab" role="tab">
-                    <i class="mdi mdi-format-list-checkbox font-size-22"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link py-3" data-toggle="tab" href="#settings-tab" role="tab">
-                    <i class="mdi mdi-settings font-size-22"></i>
-                </a>
-            </li>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content text-muted">
-            <div class="tab-pane active" id="chat-tab" role="tabpanel">
-
-                <form class="search-bar py-4 px-3">
-                    <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="mdi mdi-magnify"></span>
+                        <a href="javascript: void(0);" class="text-reset notification-item pl-3 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline mr-1"></i>
+                            <span class="mb-0 mt-1">Freelance</span>
+                        </a>
                     </div>
-                </form>
 
-                <h6 class="px-4 py-3 mt-2 bg-light">Group Chats</h6>
+                    <h6 class="px-4 py-3 mt-4 bg-light">Favourites</h6>
 
-                <div class="p-2">
-                    <a href="javascript: void(0);" class="text-reset notification-item pl-3 mb-2 d-block">
-                        <i class="mdi mdi-checkbox-blank-circle-outline mr-1 text-success"></i>
-                        <span class="mb-0 mt-1">App Development</span>
-                    </a>
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Andrew Mackie</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">It will seem like simplified English.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item pl-3 mb-2 d-block">
-                        <i class="mdi mdi-checkbox-blank-circle-outline mr-1 text-warning"></i>
-                        <span class="mb-0 mt-1">Office Work</span>
-                    </a>
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status away"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Rory Dalyell</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">To an English person, it will seem like simplified</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item pl-3 mb-2 d-block">
-                        <i class="mdi mdi-checkbox-blank-circle-outline mr-1 text-danger"></i>
-                        <span class="mb-0 mt-1">Personal Group</span>
-                    </a>
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status busy"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Jaxon Dunhill</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">To achieve this, it would be necessary.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item pl-3 d-block">
-                        <i class="mdi mdi-checkbox-blank-circle-outline mr-1"></i>
-                        <span class="mb-0 mt-1">Freelance</span>
-                    </a>
+                    <h6 class="px-4 py-3 mt-4 bg-light">Other Chats</h6>
+
+                    <div class="p-2 pb-4">
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Jackson Therry</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">Everyone realizes why a new common language.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status away"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Charles Deakin</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">The languages only differ in their grammar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Ryan Salting</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">If several languages coalesce the grammar of the resulting.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Sean Howse</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">It will seem like simplified English.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status busy"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Dean Coward</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">The new common language will be more simple.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="media">
+                                <div class="position-relative align-self-center mr-3">
+                                    <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status away"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Hayley East</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">One could refuse to pay expensive translators.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
 
-                <h6 class="px-4 py-3 mt-4 bg-light">Favourites</h6>
+                <div class="tab-pane" id="tasks-tab" role="tabpanel">
+                    <h6 class="p-3 mb-0 mt-4 bg-light">Working Tasks</h6>
 
-                <div class="p-2">
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status online"></i>
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">App Development<span class="float-right">75%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Andrew Mackie</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">It will seem like simplified English.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status away"></i>
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Database Repair<span class="float-right">37%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Rory Dalyell</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">To an English person, it will seem like simplified</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status busy"></i>
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Backup Create<span class="float-right">52%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Jaxon Dunhill</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">To achieve this, it would be necessary.</p>
-                                </div>
+                        </a>
+                    </div>
+
+                    <h6 class="p-3 mb-0 mt-4 bg-light">Upcoming Tasks</h6>
+
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Sales Reporting<span class="float-right">12%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Redesign Website<span class="float-right">67%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">New Admin Design<span class="float-right">84%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="p-3 mt-2">
+                        <a href="javascript: void(0);" class="btn btn-success btn-block waves-effect waves-light">Create Task</a>
+                    </div>
+
                 </div>
+                <div class="tab-pane" id="settings-tab" role="tabpanel">
+                    <h6 class="px-4 py-3 bg-light">General Settings</h6>
 
-                <h6 class="px-4 py-3 mt-4 bg-light">Other Chats</h6>
-
-                <div class="p-2 pb-4">
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status online"></i>
-                            </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Jackson Therry</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">Everyone realizes why a new common language.</p>
-                                </div>
-                            </div>
+                    <div class="p-4">
+                        <h6 class="font-weight-medium">Online Status</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check1" name="settings-check1" checked="">
+                            <label class="custom-control-label font-weight-normal" for="settings-check1">Show your status to all</label>
                         </div>
-                    </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status away"></i>
-                            </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Charles Deakin</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">The languages only differ in their grammar.</p>
-                                </div>
-                            </div>
+                        <h6 class="mt-4">Auto Updates</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check2" name="settings-check2" checked="">
+                            <label class="custom-control-label font-weight-normal" for="settings-check2">Keep up to date</label>
                         </div>
-                    </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status online"></i>
-                            </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Ryan Salting</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">If several languages coalesce the grammar of the resulting.</p>
-                                </div>
-                            </div>
+                        <h6 class="mt-4">Backup Setup</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check3" name="settings-check3">
+                            <label class="custom-control-label font-weight-normal" for="settings-check3">Auto backup</label>
                         </div>
-                    </a>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status online"></i>
-                            </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Sean Howse</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">It will seem like simplified English.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    </div>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status busy"></i>
-                            </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Dean Coward</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">The new common language will be more simple.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    <h6 class="px-4 py-3 mt-2 bg-light">Advanced Settings</h6>
 
-                    <a href="javascript: void(0);" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="position-relative align-self-center mr-3">
-                                <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-                                <i class="mdi mdi-circle user-status away"></i>
-                            </div>
-                            <div class="media-body overflow-hidden">
-                                <h6 class="mt-0 mb-1">Hayley East</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-0 text-truncate">One could refuse to pay expensive translators.</p>
-                                </div>
-                            </div>
+                    <div class="p-4">
+                        <h6 class="font-weight-medium">Application Alerts</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check4" name="settings-check4" checked="">
+                            <label class="custom-control-label font-weight-normal" for="settings-check4">Email Notifications</label>
                         </div>
-                    </a>
+
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check5" name="settings-check5">
+                            <label class="custom-control-label font-weight-normal" for="settings-check5">SMS Notifications</label>
+                        </div>
+
+                        <h6 class="mt-4">API</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check6" name="settings-check6">
+                            <label class="custom-control-label font-weight-normal" for="settings-check6">Enable access</label>
+                        </div>
+
+                    </div>
                 </div>
-
             </div>
 
-            <div class="tab-pane" id="tasks-tab" role="tabpanel">
-                <h6 class="p-3 mb-0 mt-4 bg-light">Working Tasks</h6>
+        </div> <!-- end slimscroll-menu-->
+    </div>
+    <!-- /Right-bar -->
 
-                <div class="p-2">
-                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
-                        <p class="text-muted mb-0">App Development<span class="float-right">75%</span></p>
-                        <div class="progress mt-2" style="height: 4px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </a>
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
-                        <p class="text-muted mb-0">Database Repair<span class="float-right">37%</span></p>
-                        <div class="progress mt-2" style="height: 4px;">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </a>
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
 
-                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
-                        <p class="text-muted mb-0">Backup Create<span class="float-right">52%</span></p>
-                        <div class="progress mt-2" style="height: 4px;">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </a>
-                </div>
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
-                <h6 class="p-3 mb-0 mt-4 bg-light">Upcoming Tasks</h6>
+    <!-- datepicker -->
+    <script src="assets/libs/air-datepicker/js/datepicker.min.js"></script>
+    <script src="assets/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
 
-                <div class="p-2">
-                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
-                        <p class="text-muted mb-0">Sales Reporting<span class="float-right">12%</span></p>
-                        <div class="progress mt-2" style="height: 4px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </a>
+    <!-- apexcharts -->
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
-                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
-                        <p class="text-muted mb-0">Redesign Website<span class="float-right">67%</span></p>
-                        <div class="progress mt-2" style="height: 4px;">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </a>
+    <script src="assets/libs/jquery-knob/jquery.knob.min.js"></script> 
 
-                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
-                        <p class="text-muted mb-0">New Admin Design<span class="float-right">84%</span></p>
-                        <div class="progress mt-2" style="height: 4px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </a>
-                </div>
+    <!-- Jq vector map -->
+    <script src="assets/libs/jqvmap/jquery.vmap.min.js"></script>
+    <script src="assets/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
 
-                <div class="p-3 mt-2">
-                    <a href="javascript: void(0);" class="btn btn-success btn-block waves-effect waves-light">Create Task</a>
-                </div>
+    <script src="assets/js/pages/dashboard.init.js"></script>
 
-            </div>
-            <div class="tab-pane" id="settings-tab" role="tabpanel">
-                <h6 class="px-4 py-3 bg-light">General Settings</h6>
+    <script src="assets/js/app.js"></script>
+    <script>
+        function prevEle(state)
+        {
+            $('.wizard .nav-tabs li:nth-child('+state+')').removeClass('active');
+            $('.wizard .nav-tabs li.active:nth-child('+(state-1)+')').find('a[data-toggle="tab"]').click();
+        }
+    </script>
 
-                <div class="p-4">
-                    <h6 class="font-weight-medium">Online Status</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="checkbox" class="custom-control-input" id="settings-check1" name="settings-check1" checked="">
-                        <label class="custom-control-label font-weight-normal" for="settings-check1">Show your status to all</label>
-                    </div>
-
-                    <h6 class="mt-4">Auto Updates</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="checkbox" class="custom-control-input" id="settings-check2" name="settings-check2" checked="">
-                        <label class="custom-control-label font-weight-normal" for="settings-check2">Keep up to date</label>
-                    </div>
-
-                    <h6 class="mt-4">Backup Setup</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="checkbox" class="custom-control-input" id="settings-check3" name="settings-check3">
-                        <label class="custom-control-label font-weight-normal" for="settings-check3">Auto backup</label>
-                    </div>
-
-                </div>
-
-                <h6 class="px-4 py-3 mt-2 bg-light">Advanced Settings</h6>
-
-                <div class="p-4">
-                    <h6 class="font-weight-medium">Application Alerts</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="checkbox" class="custom-control-input" id="settings-check4" name="settings-check4" checked="">
-                        <label class="custom-control-label font-weight-normal" for="settings-check4">Email Notifications</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="checkbox" class="custom-control-input" id="settings-check5" name="settings-check5">
-                        <label class="custom-control-label font-weight-normal" for="settings-check5">SMS Notifications</label>
-                    </div>
-
-                    <h6 class="mt-4">API</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="checkbox" class="custom-control-input" id="settings-check6" name="settings-check6">
-                        <label class="custom-control-label font-weight-normal" for="settings-check6">Enable access</label>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div> <!-- end slimscroll-menu-->
-</div>
-<!-- /Right-bar -->
-
-<!-- Right bar overlay-->
-<div class="rightbar-overlay"></div>
-
-<!-- JAVASCRIPT -->
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="assets/libs/simplebar/simplebar.min.js"></script>
-<script src="assets/libs/node-waves/waves.min.js"></script>
-
-<script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
-
-<!-- datepicker -->
-<script src="assets/libs/air-datepicker/js/datepicker.min.js"></script>
-<script src="assets/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
-
-<!-- apexcharts -->
-<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-<script src="assets/libs/jquery-knob/jquery.knob.min.js"></script> 
-
-<!-- Jq vector map -->
-<script src="assets/libs/jqvmap/jquery.vmap.min.js"></script>
-<script src="assets/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
-
-<script src="assets/js/pages/dashboard.init.js"></script>
-
-<script src="assets/js/app.js"></script>
-<script>
-    function prevEle(state)
-    {
-        $('.wizard .nav-tabs li:nth-child('+state+')').removeClass('active');
-        $('.wizard .nav-tabs li.active:nth-child('+(state-1)+')').find('a[data-toggle="tab"]').click();
-    }
-</script>
-
-<script type="text/javascript">
+    <script type="text/javascript">
         // ------------step-wizard-------------
         $(document).ready(function () {
             $('.nav-tabs > li a[title]').tooltip();
@@ -1386,9 +1478,77 @@ function addr_search()
     xmlhttp.send();
 }
 
-
 </script>
 
+
+<script>
+
+    $(document).ready(function(){
+
+        var $modal = $('#modal');
+
+        var image = document.getElementById('sample_image');
+
+        var cropper;
+
+        $('#upload_image').change(function(event){
+            var files = event.target.files;
+
+            var done = function(url){
+                image.src = url;
+                $modal.modal('show');
+            };
+
+            if(files && files.length > 0)
+            {
+                reader = new FileReader();
+                reader.onload = function(event)
+                {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        });
+
+        $modal.on('shown.bs.modal', function() {
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 3,
+                preview:'.preview'
+            });
+        }).on('hidden.bs.modal', function(){
+            cropper.destroy();
+            cropper = null;
+        });
+
+        $('#crop').click(function(){
+            canvas = cropper.getCroppedCanvas({
+                width:400,
+                height:400
+            });
+
+            canvas.toBlob(function(blob){
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function(){
+                    var base64data = reader.result;
+                    $.ajax({
+                        url:'tes3.php',
+                        method:'POST',
+                        data:{image:base64data},
+                        success:function(data)
+                        {
+                            $modal.modal('hide');
+                            $('#uploaded_image').attr('src', data);
+                        }
+                    });
+                };
+            });
+        });
+        
+    });
+</script>
 <!--tinymce js-->
 <script src="assets/libs/tinymce/tinymce.min.js"></script>
 
