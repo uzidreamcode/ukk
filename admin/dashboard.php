@@ -445,8 +445,7 @@ $pecah_user=$ambil_user->fetch_assoc();
 
                                                                     <div class="col-5 ml-auto">
                                                                         <div>
-                                                                            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                                                                            <lottie-player src="https://assets1.lottiefiles.com/animated_stickers/lf_tgs_vvt5UT.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+                                                                            <img style="margin-top: -14px; height: 110px" src="assets/senyum.png" alt="" class="img-fluid">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -468,7 +467,7 @@ $pecah_user=$ambil_user->fetch_assoc();
 
                                                                     <div class="col-5 ml-auto">
                                                                         <div>
-                                                                            <img src="assets/images/widget-img.png" alt="" class="img-fluid">
+                                                                            <img style="height: 100px" src="assets/kontol.png" alt="" class="img-fluid">
                                                                         </div>
                                                                     </div>
                                                                 </div>
