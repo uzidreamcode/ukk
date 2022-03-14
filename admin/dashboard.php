@@ -429,9 +429,51 @@ $pecah_user=$ambil_user->fetch_assoc();
                                             </div>
 
                                             <div class="col-xl-9">
-                                                <div class="row mt-4 mt-xl-0">
-                                                    <div class="col-md-4">
-                                                        
+                                                <div class="row mt-2 mt-xl-0">
+                                                    <div class="col-md-6">
+                                                        <div style="border-radius: 15px" class="card">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <h5>Welcome Back !</h5>
+                                                                        <p class="text-muted">Xoric Dashboard</p>
+
+                                                                        <div class="mt-4">
+                                                                            <a href="#" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ml-1"></i></a>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-5 ml-auto">
+                                                                        <div>
+                                                                            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                                                                            <lottie-player src="https://assets1.lottiefiles.com/animated_stickers/lf_tgs_vvt5UT.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div style="border-radius: 15px" class="card">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <h5>Welcome Back !</h5>
+                                                                        <p class="text-muted">Xoric Dashboard</p>
+
+                                                                        <div class="mt-4">
+                                                                            <a href="#" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ml-1"></i></a>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-5 ml-auto">
+                                                                        <div>
+                                                                            <img src="assets/images/widget-img.png" alt="" class="img-fluid">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
 
