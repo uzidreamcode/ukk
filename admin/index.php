@@ -4,6 +4,12 @@ include 'koneksi.php';
 $nik=$_SESSION['nik'];
 $ambil=$koneksi->query("SELECT * FROM data WHERE nik='$nik'");
 $benar=$ambil->fetch_assoc();
+$nik=$_SESSION['nik'];
+$ambil_foto=$koneksi->query("SELECT * FROM data_foto WHERE nik='$nik'");
+$pecah_foto=$ambil_foto->fetch_assoc();
+$ambil_user=$koneksi->query("SELECT * FROM user WHERE nik='$nik' ");
+$pecah_user=$ambil_user->fetch_assoc();
+
 if ($benar > 0) 
 {
    
@@ -76,8 +82,8 @@ if (!isset($_SESSION['nik']))
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
-                                <span class="d-none d-sm-inline-block ml-1">Smith</span>
+                                <img class="rounded-circle header-profile-user" src="<?php echo $pecah_foto['foto']?>" alt="Header Avatar">
+                                <span class="d-none d-sm-inline-block ml-1"><?php echo $pecah_user['nama_lengkap']?></span>
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
